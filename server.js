@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const PORT = 8001;
 const app = express();
 
 mongoose.set("strictQuery", false);
@@ -18,7 +19,7 @@ mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => console.log("MongoDB successfully connected"))
   .catch((err) => console.log(err));
-const port = process.env.PORT || 8001; // process.env.port is Heroku's port if you choose to deploy the app there
+const port = process.env.PORT || PORT; // process.env.port is Heroku's port if you choose to deploy the app there
 app.listen(port, () =>
   console.log(`Server up and running on port ${port}. You better catch it!`)
 );
