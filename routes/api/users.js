@@ -21,7 +21,7 @@ router.post("/register", (req, res) => {
     return res.status(400).json(errors);
   }
   //validating email
-  //check the User in the db for the user in the form then look up email
+  //check the User collection in the db for the user in the form then look up email
   User.findOne({ email: req.body.email }).then((user) => {
     //email already exists
     if (user) {
