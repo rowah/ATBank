@@ -2,6 +2,7 @@ const Validator = require("validator");
 const isEmpty = require("is-empty");
 
 module.exports = function validateLoginInput(data) {
+  //carry out validations and create errors with name, email, password and confirmerPassword keys and their respective value pair that will be returned depending on the user input data from the front-end.
   let errors = {};
 
   //converts empty email and password inputs into empty strings
