@@ -84,7 +84,29 @@ router.post("/login", (req, res) => {
           id: user.id,
           name: user.name,
         };
+
+        //sIGN TOKEN
+        jwt.sign(
+          payload,
+          keys.secretOrKey,
+          {
+            expiresIn: 31556926, // 1 year in seconds
+          },
+          (err, token) => {
+            res.json({
+              success: true,
+              token: "Bearer " + token,
+            });
+          }
+        );
+      } else {
+        return res
+          .status(400)
+          .json({ passwordIncorrect: " Password incorrect" });
       }
     });
   });
 });
+
+//export router for visibility in other files
+module.exports = router;
