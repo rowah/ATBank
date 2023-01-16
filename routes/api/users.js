@@ -75,5 +75,16 @@ router.post("/login", (req, res) => {
     if (!user) {
       return res.status(404).json({ emilnotfound: "Email not found" });
     }
+    //password check
+    bcrypt.compare(password, user.password).then((isMatch) => {
+      if (isMatch) {
+        //if user is matched
+        //Create a JWT Payload
+        const payload = {
+          id: user.id,
+          name: user.name,
+        };
+      }
+    });
   });
 });
